@@ -1,0 +1,327 @@
+:root {
+    --primary: #1cb0f6;
+    --primary-dark: #1899d6;
+    --secondary: #6c5ce7;
+    --success: #58cc02;
+    --danger: #ff4b4b;
+    --dark: #2d3436;
+    --bg: #f7f9fc;
+    --glass: rgba(255, 255, 255, 0.9);
+}
+
+* { 
+    box-sizing: border-box; 
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1); 
+}
+
+body {
+    margin: 0; 
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: var(--bg); 
+    height: 100vh; 
+    overflow: hidden;
+    color: var(--dark);
+}
+
+/* Background Blobs Modern */
+.blob, .blob-2 { 
+    position: fixed; 
+    width: 500px; 
+    height: 500px; 
+    filter: blur(80px); 
+    z-index: -1; 
+    opacity: 0.4; 
+}
+.blob { top: -200px; left: -100px; background: var(--primary); }
+.blob-2 { bottom: -200px; right: -100px; background: var(--secondary); }
+
+.app-container { 
+    max-width: 500px; 
+    margin: 0 auto; 
+    padding: 25px; 
+    height: calc(100vh - 100px); 
+    overflow-y: auto; 
+    scrollbar-width: none; 
+}
+
+.app-container::-webkit-scrollbar { display: none; }
+
+/* Animasi Masuk Halaman */
+.page { animation: slideUp 0.4s ease-out; }
+@keyframes slideUp { 
+    from { opacity: 0; transform: translateY(20px); } 
+    to { opacity: 1; transform: translateY(0); } 
+}
+
+.hidden { display: none !important; }
+
+/* Cards & Glassmorphism */
+.glass-box { 
+    background: var(--glass); 
+    padding: 20px; 
+    border-radius: 24px; 
+    border: 1px solid rgba(255,255,255,0.7); 
+    box-shadow: 0 10px 25px rgba(0,0,0,0.03); 
+    margin-bottom: 20px;
+    backdrop-filter: blur(10px);
+}
+
+.stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px; }
+
+.stat-card { 
+    padding: 20px; 
+    border-radius: 22px; 
+    color: white; 
+    text-align: center; 
+    box-shadow: 0 12px 20px rgba(0,0,0,0.1); 
+}
+.xp-gradient { background: linear-gradient(135deg, #0984e3, #1cb0f6); }
+.rank-gradient { background: linear-gradient(135deg, #6c5ce7, #a29bfe); }
+
+/* Quiz & Modern Buttons */
+.quiz-box { padding: 30px 20px; border-radius: 28px; text-align: center; background: white; border: 2px solid #eef2f6; }
+
+.options-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 25px 0; }
+
+.option-btn { 
+    padding: 18px; 
+    background: white; 
+    border: 2px solid #e5e7eb; 
+    border-bottom: 5px solid #e5e7eb; /* Efek 3D */
+    border-radius: 20px; 
+    font-weight: 700; 
+    cursor: pointer; 
+    font-size: 15px;
+    color: #4b5563;
+}
+
+.option-btn:active { transform: translateY(3px); border-bottom-width: 2px; }
+
+.option-btn.correct { 
+    background: #dcfce7; 
+    color: #166534; 
+    border-color: #22c55e; 
+    border-bottom-color: #15803d; 
+}
+
+.option-btn.wrong { 
+    background: #fee2e2; 
+    color: #991b1b; 
+    border-color: #ef4444; 
+    border-bottom-color: #b91c1c; 
+}
+
+/* Floating Navigation */
+.bottom-nav { 
+    position: fixed; 
+    bottom: 20px; 
+    left: 50%; 
+    transform: translateX(-50%);
+    width: 90%; 
+    max-width: 420px;
+    background: rgba(255, 255, 255, 0.95); 
+    display: flex; 
+    justify-content: space-around; 
+    padding: 12px; 
+    border-radius: 25px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+    backdrop-filter: blur(15px);
+    z-index: 1000; 
+    border: 1px solid rgba(255,255,255,0.5);
+}
+
+.nav-item { 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    color: #94a3b8; 
+    font-size: 10px; 
+    font-weight: 800; 
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.nav-item.active { color: var(--primary); transform: scale(1.1); }
+.nav-item span { margin-top: 2px; }
+
+/* Progress Bar */
+.bar-outer { height: 12px; background: #eef2f6; border-radius: 10px; overflow: hidden; border: 1px solid #e2e8f0; }
+.bar-inner { height: 100%; background: linear-gradient(90deg, #58cc02, #85ef47); transition: width 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+
+.history-card {
+    background: white;
+    padding: 15px 20px;
+    border-radius: 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-left: 5px solid var(--success);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+    animation: slideUp 0.3s ease-out;
+}
+
+.history-card b {
+    font-size: 16px;
+    color: var(--dark);
+}
+
+.history-card span {
+    color: var(--success);
+    font-weight: 700;
+    margin-left: 10px;
+}
+
+/* Tambahkan di bagian bawah style.css */
+.avatar-circle {
+    width: 50px;
+    height: 50px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+#username-input::placeholder {
+    color: #cbd5e1;
+    font-weight: 600;
+}
+
+#username-input:focus {
+    color: var(--primary);
+}
+
+/* Update tombol marathon agar lebih estetik */
+.btn-primary.marathon {
+    background: linear-gradient(135deg, #6c5ce7 0%, #a29bfe 100%);
+    border: none;
+    border-bottom: 4px solid #5b4bc4; /* Efek 3D */
+    color: white;
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 18px;
+    border-radius: 20px; /* Super rounded */
+    box-shadow: 0 8px 20px rgba(108, 92, 231, 0.3);
+    cursor: pointer;
+    width: 100%;
+    transition: all 0.2s ease;
+}
+
+/* Efek saat tombol ditekan */
+.btn-primary.marathon:active {
+    transform: translateY(3px);
+    border-bottom-width: 0px;
+    box-shadow: 0 4px 10px rgba(108, 92, 231, 0.2);
+}
+
+/* Perbaikan input agar serasi dengan tombol */
+#replay-setup input {
+    background: rgba(255, 255, 255, 0.5);
+    border: 2px solid #eef2f6;
+    border-radius: 15px;
+    padding: 15px;
+    font-weight: 700;
+    color: #2d3436;
+    outline: none;
+    text-align: center;
+}
+
+#replay-setup input:focus {
+    border-color: #a29bfe;
+    background: white;
+}
+
+/* Styling Khusus Review Page */
+.review-card-main {
+    text-align: center;
+    padding: 40px 20px !important;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 6px solid #ff4b4b !important; /* Garis merah di bawah card */
+}
+
+.count-big {
+    font-size: 72px !important;
+    color: #ff4b4b;
+    margin: 0 !important;
+    line-height: 1;
+}
+
+.count-label {
+    font-weight: 700;
+    color: #64748b;
+    margin: 10px 0 25px 0;
+}
+
+/* Tombol Perbaiki Sekarang yang Estetik */
+.btn-perbaiki {
+    background: linear-gradient(135deg, #58cc02 0%, #2ecc71 100%);
+    color: white;
+    border: none;
+    padding: 18px 35px;
+    border-radius: 50px;
+    font-weight: 800;
+    font-size: 14px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    box-shadow: 0 10px 20px rgba(88, 204, 2, 0.3);
+    transition: all 0.3s ease;
+}
+
+.btn-perbaiki:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 25px rgba(88, 204, 2, 0.4);
+}
+
+/* Styling Riwayat List */
+.history-item-card {
+    background: white;
+    padding: 15px 20px;
+    border-radius: 20px;
+    margin-bottom: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-left: 5px solid #58cc02;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+}
+
+.history-text b { color: #2d3436; font-size: 16px; }
+.history-text span { color: #58cc02; font-weight: 800; margin-left: 8px; }
+
+.btn-clear-mini {
+    background: #f1f5f9;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 800;
+    color: #64748b;
+    cursor: pointer;
+}
+
+/* Badge Mode */
+.mode-badge {
+    background: #fff1f1;
+    color: #ff4b4b;
+    padding: 5px 15px;
+    border-radius: 10px;
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.btn-back-minimal {
+    background: none;
+    border: none;
+    color: #94a3b8;
+    font-weight: 700;
+    cursor: pointer;
+    margin-bottom: 10px;
+    font-size: 13px;
+}
